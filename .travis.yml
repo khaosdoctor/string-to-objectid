@@ -1,6 +1,8 @@
 os:
   - linux
 language: node_js
+nodejs:
+  - node
 
 before_script:
   - npm i -g ava codecov nyc tsc
