@@ -10,4 +10,5 @@ function stringToObjectId(data) {
     return new bson_objectid_1.default(data);
 }
 exports.default = stringToObjectId;
+module.exports = stringToObjectId;
 //# sourceMappingURL=index.js.map
