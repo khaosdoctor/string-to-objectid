@@ -1,14 +1,6 @@
 os:
   - linux
 language: node_js
-node_js:
-  - "node"
-  - "11"
-  - "10"
-  - "9"
-  - "8"
-matrix:
-  fast_finish: true
 
 before_script:
   - npm i -g ava codecov nyc tsc
