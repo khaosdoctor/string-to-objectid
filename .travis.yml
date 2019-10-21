@@ -5,7 +5,7 @@ nodejs:
   - node
 
 before_script:
-  - npm i -g ava codecov nyc tsc
+  - npm i -g mocha codecov nyc typescript
   - npm i
 
 jobs:
