@@ -1,0 +1,43 @@
+os:
+  - linux
+language: node_js
+node_js:
+  - "node"
+  - "11"
+  - "10"
+  - "9"
+  - "8"
+matrix:
+  fast_finish: true
+
+before_script:
+  - npm i -g ava codecov nyc tsc
+  - npm i
+
+jobs:
+  include:
+    - stage: "Build"
+      script: npm run build:clean
+
+    - stage: "Test"
+      script: npm run coverage
+
+    - stage: "Deploy"
+      deploy:
+        provider: npm
+        email: $NPM_EMAIL_ADDR
+        api_key: $NPM_API_KEY
+        skip_cleanup: true
+        on:
+          tags: true
+          branch: master
+
+after_success:
+  - npm run report
+
+notifications:
+  email:
+    recipients:
+      - hello@lsantos.dev
+    on_success: change
+    on_failure: always

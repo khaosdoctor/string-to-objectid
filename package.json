@@ -1,0 +1,65 @@
+{
+  "name": "string-to-objectid",
+  "version": "1.0.0",
+  "engines": {
+    "node": ">=8"
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "test": "mocha --require ts-node/register --recursive ./tests/*.test.ts",
+    "prepare": "npm run build:clean",
+    "lint": "standard -v ./src",
+    "build": "tsc",
+    "clean": "rm -rf dist",
+    "build:clean": "npm run clean && npm run build",
+    "lint:fix": "standard --fix",
+    "report": "cat ./coverage/lcov.info | codecov",
+    "coverage": "nyc --reporter-dir ./coverage npm run test"
+  },
+  "description": "Takes strings and turns into ObjectIds",
+  "main": "dist/index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/khaosdoctor/string-to-objectid.git"
+  },
+  "bugs": {
+    "url": "https://github.com/khaosdoctor/string-to-objectid/issues"
+  },
+  "homepage": "https://github.com/khaosdoctor/string-to-objectid#readme",
+  "pre-commit": [
+    "build"
+  ],
+  "pre-push": [
+    "lint",
+    "coverage"
+  ],
+  "author": "Lucas Santos <lhs.santoss@gmail.com>",
+  "license": "MIT",
+  "keywords": [
+    "objectid",
+    "bson",
+    "string"
+  ],
+  "private": false,
+  "dependencies": {
+    "bson-objectid": "^1.3.0"
+  },
+  "devDependencies": {
+    "@istanbuljs/nyc-config-typescript": "^0.1.3",
+    "@types/mocha": "^5.2.7",
+    "@types/node": "^12.7.4",
+    "codecov": "^3.5.0",
+    "concurrently": "^5.0.0",
+    "conduct": "^2.3.0",
+    "mocha": "^6.2.2",
+    "nyc": "^13.0.0",
+    "pre-push": "^0.1.1",
+    "source-map-support": "^0.5.13",
+    "standard": "^14.1.0",
+    "ts-node": "^8.4.1",
+    "tslint-config-standard": "^8.0.1",
+    "typescript": "^3.6.2"
+  }
+}
