@@ -1,6 +1,6 @@
 import { describe, it } from 'mocha'
 import stringToObjectId from '../src'
-import ObjectID from 'bson-objectid'
+import { ObjectId } from 'bson'
 import assert from 'assert'
 
 describe('Main tests', () => {
@@ -8,9 +8,9 @@ describe('Main tests', () => {
     assert.throws(() => stringToObjectId('not a valid ID'), TypeError, 'This is not a valid ObjectId')
   })
   it('Should return a new OID', () => {
-    const string = new ObjectID().toHexString()
+    const string = new ObjectId().toHexString()
     const OID = stringToObjectId(string)
-    assert.ok(OID instanceof ObjectID)
+    assert.ok(OID instanceof ObjectId)
   })
 })
 
